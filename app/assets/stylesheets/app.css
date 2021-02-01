@@ -1,0 +1,52 @@
+body {
+  margin: 0px;
+}
+.main-page {
+  width: 100%;
+}
+.home {
+  width: 100%;
+}
+.banner {
+  width: 100%;
+  padding-top: 40%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.banner-link {
+  display: inline-block;
+  padding: 8px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.banner-link a {
+  background-color: white;
+  color: black;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 20px;
+}
+.banner-link a:hover {
+  background-color: black;
+  color: yellow;
+  padding: 12px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.nav-bar {
+  background-color: green;
+  padding: 6px;
+}
+.nav-item {
+  padding: 8px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+.nav-item:hover {
+  background-color: white;
+  text-decoration: none;
+  color: black;
+}
