@@ -56,6 +56,10 @@ body {
   margin: auto;
   display: block;
 }
+.dog-form label {
+  margin-top: 12px;
+  font-size: 20px;
+}
 .dog-form button[type="submit"] {
   padding: 12px;
   margin-top: 12px;
@@ -70,15 +74,6 @@ body {
   width: 100%;
   border-radius: 6px;
   padding: 6px;
-}
-.dog-form textarea {
-  height: 100px;
-  width: 100%;
-  border-radius: 6px;
-  padding: 6px;
-}
-.dog-form label {
-  font-size: 20px;
 }
 .page {
   padding: 12px;
@@ -99,4 +94,25 @@ body {
   width: 100%;
   padding: 12px;
   text-align: center;
+}
+.marker {
+  padding: 12px;
+  width: 50px;
+  margin: auto;
+  display: block;
+}
+.marker:hover {
+  cursor: pointer;
+}
+.marker img {
+  width: 100%;
+}
+.view-more {
+  margin: auto;
+  display: block;
+  border: none;
+  background: #cdcfb3;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 20px;
 }

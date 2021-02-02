@@ -11,7 +11,7 @@ const Banner = () => {
         <Link to="/home/report-a-dog" >Report a Dog</Link>
       </div>
       <div className="col-lg-4 col-sm-4 col-12 banner-link">
-        <Link to="/home/dogs-stories" >Dogs Stories</Link>
+        <Link to="/home/dogs-updates" >Updates</Link>
       </div>
     </div>
   )

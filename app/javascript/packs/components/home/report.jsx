@@ -12,13 +12,15 @@ const Report = () => {
     let fData = new FormData()
     fData.append('stray_dog[description]', data.description)
     fData.append('stray_dog[image]', data.image[0])
-
-    axios.post('/api/stray_dogs', fData, {})
+    navigator.geolocation.getCurrentPosition((position) => {
+      fData.append('stray_dog[lat]', position.coords.latitude)
+      fData.append('stray_dog[lngt]', position.coords.longitude)
+      axios.post('/api/stray_dogs', fData, {})
       .then((res) => {
         setId(res.data.id)
         setDogCreated(true)
       })
-    
+    });    
   }
   const form = () => {
     return(
@@ -48,6 +50,7 @@ const Report = () => {
   return(
     <div className="page">
       <h1 className="text-center">Report stray dog or puppies</h1>
+      <h3 className="text-center">Please turn GPS on to report dog location</h3>
       {dogCreated ? success() : form()}
     </div>
   )

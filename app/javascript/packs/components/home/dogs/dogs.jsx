@@ -27,7 +27,7 @@ const Dogs = () => {
       {data.dogs.map((e) => {
         return(<Dog {...e} key={e.id}/>)
       })}
-      {data.next_page ? <button onClick={loadNext}>Next</button> : false}
+      {data.next_page ? <button className="view-more" onClick={loadNext}>View More</button> : false}
     </div>
   )
 }

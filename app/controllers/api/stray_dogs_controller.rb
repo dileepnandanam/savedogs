@@ -26,7 +26,7 @@ class Api::StrayDogsController < ApplicationController
   protected
 
   def stray_dog_params
-    params.require(:stray_dog).permit(:image, :description)
+    params.require(:stray_dog).permit(:image, :description, :lat, :lngt)
   end
 
   def attributes_for(dog)
