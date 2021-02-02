@@ -46,3 +46,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "bootstrap", "~> 4.6"
+gem 'devise_token_auth'
+gem 'omniauth'
+
+gem "will_paginate", "~> 3.3"
+
+gem "pry", "~> 0.13.1"

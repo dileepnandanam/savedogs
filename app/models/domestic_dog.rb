@@ -1,0 +1,3 @@
+class DomesticDog < Dog
+
+end

@@ -1,0 +1,3 @@
+class StrayDog < Dog
+
+end

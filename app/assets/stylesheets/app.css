@@ -50,3 +50,53 @@ body {
   text-decoration: none;
   color: black;
 }
+.dog-form {
+  width: 100%;
+  max-width: 550px;
+  margin: auto;
+  display: block;
+}
+.dog-form button[type="submit"] {
+  padding: 12px;
+  margin-top: 12px;
+  color: black;
+  background-color: lightgreen;
+  border: none;
+  border-radius: 6px;
+  font-size: 20px;
+}
+.dog-form textarea {
+  height: 100px;
+  width: 100%;
+  border-radius: 6px;
+  padding: 6px;
+}
+.dog-form textarea {
+  height: 100px;
+  width: 100%;
+  border-radius: 6px;
+  padding: 6px;
+}
+.dog-form label {
+  font-size: 20px;
+}
+.page {
+  padding: 12px;
+  width: 100%;
+}
+.dog {
+  width: 100%;
+  display: inline-block;
+}
+.dog img {
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  display: block;
+}
+.dog .description {
+  font-size: 20px;
+  width: 100%;
+  padding: 12px;
+  text-align: center;
+}
