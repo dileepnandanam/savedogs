@@ -15,7 +15,6 @@ const App = () => {
   return(
     <BrowserRouter>
       <div className="main-page">
-        <Nav />
         <Switch>
           <Route path="/" exact>
             <Home />

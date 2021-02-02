@@ -18,6 +18,16 @@ class Api::StrayDogsController < ApplicationController
     end
   end
 
+  def update
+    @stray_dog = StrayDog.find_by_id(params[:id])
+    @stray_dog.update(stray_dog_params)
+    if(@stray_dog.valid?)
+      render json: attributes_for(@stray_dog)
+    else
+      render json: @stray_dog.errors.messages
+    end
+  end
+
   def show
     result = attributes_for StrayDog.find_by_id(params[:id])
     render json: result

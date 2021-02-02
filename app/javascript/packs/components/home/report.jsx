@@ -1,25 +1,34 @@
 import React, {useState} from 'react'
-import {Link, Redirect} from 'react-router-dom'
+import {Link, Redirect, useParams} from 'react-router-dom'
 import {useForm} from 'react-hook-form'
 import axios from 'axios'
 
-const Report = () => {
-
+const Report = (props) => {
+  const {dog_id} = useParams()
   const {register, handleSubmit, errors} = useForm()
   const [dogCreated, setDogCreated] = useState(false)
   const [id, setId] = useState(null)
   const onSubmit = (data) => {
     let fData = new FormData()
     fData.append('stray_dog[description]', data.description)
-    fData.append('stray_dog[image]', data.image[0])
+    if(data.image[0])  
+      fData.append('stray_dog[image]', data.image[0])
     navigator.geolocation.getCurrentPosition((position) => {
       fData.append('stray_dog[lat]', position.coords.latitude)
       fData.append('stray_dog[lngt]', position.coords.longitude)
-      axios.post('/api/stray_dogs', fData, {})
-      .then((res) => {
-        setId(res.data.id)
-        setDogCreated(true)
-      })
+      if(props.isEditing)  
+        axios.put(`/api/stray_dogs/${dog_id}`, fData, {})
+        .then((res) => {
+          setId(res.data.id)
+          setDogCreated(true)
+        })
+      else {
+        axios.post(`/api/stray_dogs`, fData, {})
+        .then((res) => {
+          setId(res.data.id)
+          setDogCreated(true)
+        })
+      }
     });    
   }
   const form = () => {
@@ -28,7 +37,7 @@ const Report = () => {
         <form onSubmit={handleSubmit(onSubmit)} className="dog-form">
           <label>Upload Photo</label>
           <div className="clearfix" />
-          <input type="file" name="image" ref={register({required: true})} />
+          <input type="file" name="image" ref={register({required: !props.isEditing})} />
           <div className="clearfix" />
 
           <label>Describe the situation</label>
