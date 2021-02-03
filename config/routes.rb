@@ -3,10 +3,13 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   scope '/api', module: 'api' do
     resources :stray_dogs
+    resources :users do
+      get :email_taken, on: :collection
+    end
   end
   root to: 'apps#index'
   get '/', to: 'apps#index'
   get '/home/*path', to: 'apps#index'
-  get '/auth/*path', to: 'apps#index'
+  get '/user/*path', to: 'apps#index'
 
 end
