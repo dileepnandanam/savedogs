@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {useForm} from 'react-hook-form'
 import axios from 'axios'
 import {setUserFrom, authHeaders, currentUser} from '../../src/user'
@@ -21,6 +21,7 @@ class Signin extends React.Component {
 
 function SigninForm(props) {
   const {register, handleSubmit} = useForm()
+  const [login_error, setLoginError] = useState(null)
   const onSubmit = function(data) {
     axios.post('/auth/sign_in', data, {
       'Content-type': 'application/json'
@@ -28,7 +29,7 @@ function SigninForm(props) {
         setUserFrom(res)
         props.setCurrentUser(currentUser)
     }).catch(function(error) {
-      alert(error)
+      setLoginError('email or password is wrong')
     })
   }
   return(
@@ -43,6 +44,8 @@ function SigninForm(props) {
         <label>Password</label>
         <div className="clearfix" />
         <input name="password" ref={register({required: true})} placeholder="Password"/>
+        <div className="clearfix" />
+        {login_error}
         <div className="clearfix" />
 
         <button type="submit" className="register-button button">Login</button>

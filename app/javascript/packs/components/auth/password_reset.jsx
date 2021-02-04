@@ -3,7 +3,7 @@ import {useForm} from 'react-hook-form'
 import {useState} from 'react'
 import axios from 'axios'
 import {useLocation} from 'react-router-dom'
-import {setUserFrom, authHeaders, currentUser} from './../../src/user'
+import {setUserFrom, authHeaders, currentUser} from '../../src/user'
 
 const PasswordReset = (props) => {
 

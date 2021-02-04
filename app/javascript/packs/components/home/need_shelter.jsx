@@ -1,8 +1,9 @@
 import React from 'react'
-import {Link, Switch, Route} from 'react-router-dom'
+import {Link, Switch, Route, Redirect} from 'react-router-dom'
 import {DogContainer} from './dogs/dog_container'
 import {Dogs} from './dogs/dogs'
 import {Report} from './report'
+import {currentUser} from '../../src/user'
 const NeedShelter = () => {
   return(
     <div className="page">
@@ -18,7 +19,7 @@ const NeedShelter = () => {
           <DogContainer />
         </Route>
         <Route path="/home/dogs-need-shelter/:dog_id/edit">
-          <Report isEditing={true}/>
+          {currentUser() ? <Report isEditing={true}/> : <Redirect to="/user/signin" />}
         </Route>
       </Switch>
     </div>

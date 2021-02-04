@@ -18,7 +18,7 @@ const Form = function(props) {
   const {register, handleSubmit} = useForm()
   const [error, setError] = useState()
   const onSubmit = (data) => {
-    axios.post('/auth/password', {...data, ...{redirect_url: 'http://localhost:3000/password_reset'}}, {
+    axios.post('/auth/password', data, {
       'Content-type': 'appplication/json'
     }).then((res) => {
       props.setEmailEntered(data.email)

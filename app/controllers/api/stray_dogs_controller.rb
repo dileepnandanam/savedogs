@@ -1,6 +1,6 @@
 class Api::StrayDogsController < ApplicationController
   def index
-    @dogs = Dog.order('created_at DESC')
+    @dogs = Dog.includes(:user).order('created_at DESC')
       .paginate(per_page: 5, page: params[:page])
 
     render json: {
@@ -10,7 +10,7 @@ class Api::StrayDogsController < ApplicationController
   end
 
   def create
-    @stray_dog = StrayDog.new stray_dog_params
+    @stray_dog = StrayDog.new stray_dog_params.merge(user_id: current_user.id)
     if @stray_dog.save
       render json: attributes_for(@stray_dog)
     else
@@ -42,6 +42,7 @@ class Api::StrayDogsController < ApplicationController
   def attributes_for(dog)
     {
       id: dog.id,
+      user_id: dog.user.id,
       image: image_url(dog),
       lat: dog.lat,
       lngt: dog.lngt,

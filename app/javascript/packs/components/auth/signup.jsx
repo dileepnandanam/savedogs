@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useForm } from "react-hook-form";
 import axios from 'axios'
 import {Redirect} from 'react-router-dom'
@@ -20,18 +20,16 @@ class Signup extends React.Component {
 }
 
 function SignupForm(props) {
-  const {register, handleSubmit, errors} = useForm()
+  const {register, handleSubmit, errors, getValues} = useForm()
+
   const onSubmit = function(data) {
     axios.post('/auth', {...data, confirm_success_url: 'http://localhost:3000/email_confirm'}, {
       'Content-type': 'application/json'
     }).then(function(res) {
         setUserFrom(res)
         props.setCurrentUser(currentUser())
-    }).catch((res) => {
-      console.log(res)
     })
   }
-
 
   return(
     <div className="dog-form">
@@ -65,10 +63,16 @@ function SignupForm(props) {
 
         <label>Password Confirmation</label>
         <div className="clearfix" />
-        <input name="password_confirmation" ref={register({required: true})} placeholder="Password Confirmation"/>
+        <input name="password_confirmation" ref={register({required: true,
+          validate: () => {
+            return getValues('password_confirmation') == getValues('password')
+          }
+        })} placeholder="Password Confirmation"/>
+        <div className="clearfix" />
+        {errors.password_confirmation && errors.password_confirmation.type == 'validate' && 'Passwords does not match'}
         <div className="clearfix" />
 
-        <button type="submit" className="register-button button">Register</button>
+        <button type="submit" className="register-button button">Signup</button>
       </form>
     </div>
   )

@@ -4,7 +4,6 @@ import {useState} from 'react'
 import axios from 'axios'
 import {setUserFrom, authHeaders, currentUser} from '../../src/user'
 
-
 const PasswordUpdate = () => {
   const {register, handleSubmit, errors} = useForm()
   const onSubmit = (data) => {

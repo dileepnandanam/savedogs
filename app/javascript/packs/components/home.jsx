@@ -1,9 +1,10 @@
 import React from 'react'
-import {Link, Switch, Route} from 'react-router-dom'
+import {Link, Switch, Route, useRoutMatch, Redirect} from 'react-router-dom'
 import {Banner} from './home/banner'
 import {Report} from './home/report'
 import {NeedShelter} from './home/need_shelter'
 import {Updates} from './home/updates'
+import {currentUser} from '../src/user'
 
 const Home = () => {
   return(
@@ -14,7 +15,7 @@ const Home = () => {
           <NeedShelter />
         </Route>
         <Route path="/home/report-a-dog">
-          <Report />
+          {currentUser() ? <Report /> : <Redirect to="/user/signin" />}
         </Route>
         <Route path="/home/dogs-need-shelter">
           <NeedShelter />

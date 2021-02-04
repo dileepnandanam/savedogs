@@ -9,12 +9,7 @@ import {BrowserRouter, Link, Switch, Route, Redirect} from 'react-router-dom'
 import {Nav} from './components/nav'
 import {currentUser} from './src/user'
 import {Home} from './components/home'
-import {Signin} from './components/auth/signin'
-import {Signup} from './components/auth/signup'
-import {ForgotPassword} from './components/auth/forgot_password'
-import {PasswordReset} from './components/auth/password_reset'
-import {PasswordUpdate} from './components/auth/password_update'
-
+import {Auth} from './components/auth'
 const App = () => {
   const [user, setCurrentUser] = useState(currentUser())
   
@@ -29,21 +24,7 @@ const App = () => {
           <Route path="/home">
             <Home />
           </Route>
-          <Route path="/user/signin">
-            {user ? <Redirect to="/" /> : <Signin setCurrentUser={setCurrentUser} />}
-          </Route>
-          <Route path="/user/signup">
-            {user ? <Redirect to="/" /> : <Signup setCurrentUser={setCurrentUser} />}
-          </Route>
-          <Route path="/user/forgot_password">
-            <ForgotPassword />
-          </Route>
-          <Route path="/user/forgot_password">
-            <PasswordReset setCurrentUser={setCurrentUser} />
-          </Route>
-          <Route path="/user/update_password">
-            <PasswordUpdate setCurrentUser={setCurrentUser} />
-          </Route>
+          <Auth user={user} setCurrentUser={setCurrentUser}/>
         </Switch>
       </div>
     </BrowserRouter>

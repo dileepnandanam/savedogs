@@ -44,9 +44,14 @@ body {
   text-decoration: none;
   color: white;
   font-size: 20px;
+  background: transparent;
+  border: none;
+}
+.dropdown {
+  display: inline-block;
 }
 .nav-item:hover {
-  background-color: white;
+  background: white;
   text-decoration: none;
   color: black;
 }
@@ -79,6 +84,7 @@ body {
   width: 100%;
   border-radius: 6px;
   padding: 6px;
+  border: 1px solid forestgreen;
 }
 .page {
   padding: 12px;
@@ -120,4 +126,11 @@ body {
   padding: 12px 20px;
   border-radius: 5px;
   font-size: 20px;
+}
+.forgot-password {
+  margin-left: 12px
+}
+.edit-dog-link {
+  display: block;
+  text-align: center;
 }

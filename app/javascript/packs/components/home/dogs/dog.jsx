@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {Link, Redirect, useParams} from 'react-router-dom'
 import {useForm} from 'react-hook-form'
 import axios from 'axios'
+import {currentUser} from '../../../src/user'
 
 const Dog = (props) => {
   const openMap = () => {
@@ -13,6 +14,14 @@ const Dog = (props) => {
     else
       window.open("http://maps.google.com/maps?daddr="+ coord +"&amp;ll=");
   }
+  const edit_link = () => {
+    if(props.user_id == currentUser().id) {
+      const url = `/home/dogs-need-shelter/${props.id}/edit`
+      return(
+        <Link className="edit-dog-link" to={url}>Edit</Link>
+      )
+    }
+  }
   return(
     <div className="dog">
       <img src={props.image} />
@@ -22,6 +31,7 @@ const Dog = (props) => {
       <div className="description">
         {props.description}
       </div>
+      {edit_link()}
     </div>
   )
 }

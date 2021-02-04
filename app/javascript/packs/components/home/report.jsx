@@ -2,12 +2,19 @@ import React, {useState} from 'react'
 import {Link, Redirect, useParams} from 'react-router-dom'
 import {useForm} from 'react-hook-form'
 import axios from 'axios'
-
+import {authHeaders} from '../../src/user'
+import {useEffect} from 'react'
 const Report = (props) => {
   const {dog_id} = useParams()
-  const {register, handleSubmit, errors} = useForm()
+  const {register, handleSubmit, errors, reset} = useForm()
   const [dogCreated, setDogCreated] = useState(false)
   const [id, setId] = useState(null)
+  useEffect(() => {
+    axios.get(`/api/stray_dogs/${dog_id}`)
+      .then((res) => {
+        reset({description: res.data.description})
+      })
+  }, [])
   const onSubmit = (data) => {
     let fData = new FormData()
     fData.append('stray_dog[description]', data.description)
@@ -23,7 +30,7 @@ const Report = (props) => {
           setDogCreated(true)
         })
       else {
-        axios.post(`/api/stray_dogs`, fData, {})
+        axios.post(`/api/stray_dogs`, fData, {headers: authHeaders()})
         .then((res) => {
           setId(res.data.id)
           setDogCreated(true)
@@ -42,7 +49,7 @@ const Report = (props) => {
 
           <label>Describe the situation</label>
           <div className="clearfix" />
-          <textarea name="description" ref={register({required: true})} />
+          <textarea name="description" ref={register({required: true})}/>
           <div className="clearfix" />
 
           <button type="submit">Submit</button>

@@ -5,7 +5,8 @@ export const setUserFrom = function(res) {
     {
       'access-token': res.headers['access-token'],
       'client': res.headers['client'],
-      'uid': res.headers['uid']
+      'uid': res.headers['uid'],
+      'id': res.data.data.id
     }
   ))
   return true

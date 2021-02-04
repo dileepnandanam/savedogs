@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get '/home/*path', to: 'apps#index'
   get '/user/*path', to: 'apps#index'
 
+  default_url_options :host => "localhost:3000"
 end
