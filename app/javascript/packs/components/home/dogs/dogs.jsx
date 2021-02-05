@@ -24,6 +24,9 @@ const Dogs = () => {
   }
   return(
     <div className="page">
+      <div className="new-stray-dog">
+        <Link to="/home/report-a-dog" >Report a Dog</Link>
+      </div>
       {data.dogs.map((e) => {
         return(<Dog {...e} key={e.id}/>)
       })}

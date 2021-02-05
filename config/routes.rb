@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :stray_dogs
     resources :users do
       get :email_taken, on: :collection
+      get :get_current_user, on: :collection
+      put :update_current_user, on: :collection
     end
   end
   root to: 'apps#index'

@@ -6,6 +6,7 @@ import {Signout} from './auth/signout'
 import {ForgotPassword} from './auth/forgot_password'
 import {PasswordReset} from './auth/password_reset'
 import {PasswordUpdate} from './auth/password_update'
+import {UpdateAccount, UpdateAccountSuccess} from './auth/update_account'
 import {setCurrentUser} from '../src/user'
 export const Auth = (props) => {
   return(
@@ -27,6 +28,12 @@ export const Auth = (props) => {
       </Route>
       <Route path="/user/password_update">
         <PasswordUpdate setCurrentUser={props.setCurrentUser} />
+      </Route>
+      <Route path="/user/update_account" exact>
+        {props.user ? <UpdateAccount /> : <Redirect to="/user/signin"/>}
+      </Route>
+      <Route path="/user/update_account/success">
+        <UpdateAccountSuccess />
       </Route>
     </div>
   )

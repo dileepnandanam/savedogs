@@ -1,5 +1,6 @@
 body {
   margin: 0px;
+  font-size: 20px;
 }
 .main-page {
   width: 100%;
@@ -47,8 +48,8 @@ body {
   background: transparent;
   border: none;
 }
-.dropdown {
-  display: inline-block;
+.nav-item:first-child {
+  float: left;
 }
 .nav-item:hover {
   background: white;
@@ -133,4 +134,13 @@ body {
 .edit-dog-link {
   display: block;
   text-align: center;
+}
+.new-stray-dog {
+  text-align: center;
+  padding: 12px;
+  font-size: 20px;
+}
+.gps-alert {
+  font-size: 20px;
+  color: #3031e6;
 }

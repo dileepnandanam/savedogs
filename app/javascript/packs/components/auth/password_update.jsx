@@ -3,6 +3,7 @@ import {useForm} from 'react-hook-form'
 import {useState} from 'react'
 import axios from 'axios'
 import {setUserFrom, authHeaders, currentUser} from '../../src/user'
+import {Redirect} from 'react-router-dom'
 
 const PasswordUpdate = () => {
   const {register, handleSubmit, errors} = useForm()
@@ -31,7 +32,7 @@ const PasswordUpdate = () => {
         <input name="password_confirmation" ref={register({required: true})} placeholder="Password"/>
         <div className="clearfix" />
 
-        <button type="submit" className="register-button button">Login</button>
+        <button type="submit" className="register-button button">Update</button>
       </form>
     )
   }
@@ -43,7 +44,7 @@ const PasswordUpdate = () => {
   return(
     <div className="signup page">
       <div className="dog-form form">
-        {password_changed ? success() : form()}
+        {password_changed ? <Redirect to="/user/update_account/success" /> : form()}
       </div>
     </div>
   )

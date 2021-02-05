@@ -8,7 +8,7 @@ import Popper from 'popper.js';
 const Nav = (props) => {
   return(
     <div className="nav-bar">
-      <Link to="/" className="float-left nav-item">Home</Link>
+      <Link to="/" className="nav-item">Home</Link>
       {props.user ? <AccountMenuSignedIn /> : <AccountMenuSignedOut />}
       <div className="clearfix" />
     </div>
@@ -18,12 +18,12 @@ const Nav = (props) => {
 const AccountMenuSignedIn = () => {
   return(
     <div className="dropdown">
-      <button className="nav-item dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <button className="nav-item dropdown-toggle float-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Account
       </button>
-      <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
         <Link to="/user/signout" className="dropdown-item">Signout</Link>
-        <Link to="/user/password_update" className="dropdown-item">Update password</Link>
+        <Link to="/user/update_account" className="dropdown-item">Update Account</Link>
       </div>
     </div>
   )
@@ -32,10 +32,10 @@ const AccountMenuSignedIn = () => {
 const AccountMenuSignedOut = () => {
   return(
     <div className="dropdown">
-      <button className="nav-item dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <button className="nav-item dropdown-toggle float-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Account
       </button>
-      <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
         <Link to="/user/signin" className="dropdown-item">Signin</Link>
         <Link to="/user/signup" className="dropdown-item">Signup</Link>
       </div>

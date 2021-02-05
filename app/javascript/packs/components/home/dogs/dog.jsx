@@ -15,7 +15,7 @@ const Dog = (props) => {
       window.open("http://maps.google.com/maps?daddr="+ coord +"&amp;ll=");
   }
   const edit_link = () => {
-    if(props.user_id == currentUser().id) {
+    if(currentUser() && props.user_id == currentUser().id) {
       const url = `/home/dogs-need-shelter/${props.id}/edit`
       return(
         <Link className="edit-dog-link" to={url}>Edit</Link>
@@ -32,6 +32,7 @@ const Dog = (props) => {
         {props.description}
       </div>
       {edit_link()}
+      
     </div>
   )
 }

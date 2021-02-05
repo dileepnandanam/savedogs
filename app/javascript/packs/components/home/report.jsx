@@ -10,33 +10,34 @@ const Report = (props) => {
   const [dogCreated, setDogCreated] = useState(false)
   const [id, setId] = useState(null)
   useEffect(() => {
-    axios.get(`/api/stray_dogs/${dog_id}`)
-      .then((res) => {
-        reset({description: res.data.description})
-      })
+    if(props.isEditing)
+      axios.get(`/api/stray_dogs/${dog_id}`)
+        .then((res) => {
+          reset({description: res.data.description})
+        })
   }, [])
   const onSubmit = (data) => {
     let fData = new FormData()
     fData.append('stray_dog[description]', data.description)
     if(data.image[0])  
       fData.append('stray_dog[image]', data.image[0])
-    navigator.geolocation.getCurrentPosition((position) => {
-      fData.append('stray_dog[lat]', position.coords.latitude)
-      fData.append('stray_dog[lngt]', position.coords.longitude)
-      if(props.isEditing)  
-        axios.put(`/api/stray_dogs/${dog_id}`, fData, {})
+    if(props.isEditing)
+      axios.put(`/api/stray_dogs/${dog_id}`, fData, {})
         .then((res) => {
           setId(res.data.id)
           setDogCreated(true)
         })
-      else {
+    else  
+      navigator.geolocation.getCurrentPosition((position) => {
+        fData.append('stray_dog[lat]', position.coords.latitude)
+        fData.append('stray_dog[lngt]', position.coords.longitude)
         axios.post(`/api/stray_dogs`, fData, {headers: authHeaders()})
         .then((res) => {
           setId(res.data.id)
           setDogCreated(true)
         })
-      }
-    });    
+
+      });    
   }
   const form = () => {
     return(
@@ -66,7 +67,7 @@ const Report = (props) => {
   return(
     <div className="page">
       <h1 className="text-center">Report stray dog or puppies</h1>
-      <h3 className="text-center">Please turn GPS on to report dog location</h3>
+      <div className="text-center gps-alert">Please turn GPS on to report dog location</div>
       {dogCreated ? success() : form()}
     </div>
   )
