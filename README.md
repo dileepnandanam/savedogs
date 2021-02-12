@@ -1,2 +1,2 @@
 # Save dogs
-geotag abandoned puppies. Nearest interested people can get them.
+Report location of abandoned puppies. Nearest interested people can get them.
