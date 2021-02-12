@@ -7,9 +7,9 @@ import {currentUser} from '../../src/user'
 const NeedShelter = () => {
   return(
     <div className="page">
-      <h1 className="text-center">Dogs Need Shelter</h1>
       <Switch>
         <Route path="/" exact>
+          <h1 className="text-center">Dogs Need Shelter</h1>
           <Dogs />
         </Route>
         <Route path="/home/dogs-need-shelter" exact>

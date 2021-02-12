@@ -24,7 +24,9 @@ const Dog = (props) => {
   }
   return(
     <div className="dog">
-      <img src={props.image} />
+      <Link to={`/home/dogs-need-shelter/${props.id}`}>
+        <img src={props.image} />
+      </Link>
       <div className="marker" onClick={openMap}>
         <img src={require('../../../../images/marker.png')} />
       </div>
@@ -32,7 +34,7 @@ const Dog = (props) => {
         {props.description}
       </div>
       {edit_link()}
-      
+
     </div>
   )
 }

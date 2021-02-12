@@ -92,6 +92,7 @@ body {
   width: 100%;
 }
 .dog {
+  margin-top: 20px;
   width: 100%;
   display: inline-block;
 }
