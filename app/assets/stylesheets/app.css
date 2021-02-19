@@ -145,3 +145,34 @@ body {
   font-size: 20px;
   color: #3031e6;
 }
+.loading {
+  display: block;
+  width: 30%;
+  margin: auto;
+  margin-top: 52px;
+  max-width: 300px;
+}
+.find-nearby {
+  border: none;
+  padding: 12px;
+  margin: 8px;
+  background: #3e8fd6;
+  transition: padding 0.2s linear 0s, margin 0.2s linear 0s;
+  font-size: 20px;
+  color: black;
+  display: inline-block;
+}
+.find-nearby:hover, .find-nearby:active {
+  margin: 4px;
+  padding: 16px;
+  text-decoration: none;
+  color: black;
+}
+.dog-place {
+  text-align: center;
+  font-size: 22px;
+  margin: auto;
+  width: 80%;
+  max-width: 500px;
+  display: block;
+}

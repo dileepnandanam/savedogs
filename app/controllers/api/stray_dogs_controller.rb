@@ -1,6 +1,6 @@
 class Api::StrayDogsController < ApplicationController
   def index
-    @dogs = Dog.includes(:user).order('created_at DESC')
+    @dogs = StrayDog.nearby(params[:lat], params[:lngt]).includes(:user).order('created_at DESC')
       .paginate(per_page: 5, page: params[:page])
 
     render json: {
@@ -46,6 +46,7 @@ class Api::StrayDogsController < ApplicationController
       image: image_url(dog),
       lat: dog.lat,
       lngt: dog.lngt,
+      place: dog.place,
       description: dog.description
     }
   end

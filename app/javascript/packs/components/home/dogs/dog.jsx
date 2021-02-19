@@ -30,6 +30,9 @@ const Dog = (props) => {
       <div className="marker" onClick={openMap}>
         <img src={require('../../../../images/marker.png')} />
       </div>
+      <div className="dog-place">
+        {props.place}
+      </div>
       <div className="description">
         {props.description}
       </div>

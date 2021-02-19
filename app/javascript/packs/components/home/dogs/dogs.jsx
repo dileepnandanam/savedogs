@@ -4,29 +4,37 @@ import {useForm} from 'react-hook-form'
 import axios from 'axios'
 import {Dog} from './dog'
 
-const Dogs = () => {
+const Dogs = (props) => {
   const [data, setData] = useState({dogs: [], next_page: 1})
-  const [page, setPage] = useState(1)
 
   useEffect(() => {
     loadDogs(1)
-  }, [])
+  }, [props.location])
 
-  const loadDogs = (page_no) => {
-    axios.get(`/api/stray_dogs/?page=${page_no}`)
+  const endpoint = (page_no) => {
+    if(props.location.lat)
+      return `/api/stray_dogs/?page=${page_no}&lat=${props.location.lat}&lngt=${props.location.lngt}`
+    else
+      return `/api/stray_dogs/?page=${page_no}`
+  }
+  const loadNextDogs = (page_no) => {
+    axios.get(endpoint(page_no))
       .then((res) => {
         setData({dogs: [...data.dogs,...res.data.dogs], next_page: parseInt(res.data.next_page)})
       })
   }
+  const loadDogs = (page_no) => {
+    axios.get(endpoint(page_no))
+      .then((res) => {
+        setData({dogs: res.data.dogs, next_page: parseInt(res.data.next_page)})
+      })
+  }
 
   const loadNext = () => {
-    loadDogs(data.next_page)
+    loadNextDogs(data.next_page)
   }
   return(
     <div className="page">
-      <div className="new-stray-dog">
-        <Link to="/home/report-a-dog" >Report a Dog</Link>
-      </div>
       {data.dogs.map((e) => {
         return(<Dog {...e} key={e.id}/>)
       })}

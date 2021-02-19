@@ -52,3 +52,4 @@ gem 'omniauth'
 gem "will_paginate", "~> 3.3"
 
 gem "pry", "~> 0.13.1"
+gem 'geocoder'
