@@ -47,12 +47,19 @@ const Report = (props) => {
           <div className="clearfix" />
           <input type="file" name="image" ref={register({required: !props.isEditing})} />
           <div className="clearfix" />
+          <div className="error">
+            {errors.image && "Upload photo"}
+          </div>
+          <div className="clearfix" />
 
           <label>Describe the situation</label>
           <div className="clearfix" />
           <textarea name="description" ref={register({required: true})}/>
           <div className="clearfix" />
-
+          <div className="error">
+            {errors.description && "can't be blank"}
+          </div>
+          <div className="clearfix" />
           <button type="submit">Submit</button>
         </form>
       </div>
