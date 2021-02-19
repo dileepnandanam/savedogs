@@ -1,6 +1,6 @@
 class Api::StrayDogsController < ApplicationController
   def index
-    @dogs = StrayDog.nearby(params[:lat], params[:lngt]).includes(:user).order('created_at DESC')
+    @dogs = StrayDog.nearby(params[:lat], params[:lngt]).includes(:user)
       .paginate(per_page: 5, page: params[:page])
 
     render json: {
@@ -31,6 +31,13 @@ class Api::StrayDogsController < ApplicationController
   def show
     result = attributes_for StrayDog.find_by_id(params[:id])
     render json: result
+  end
+
+  def destroy
+    stray_dog = StrayDog.find_by_id(params[:id])
+    if(current_user == stray_dog.user)
+      stray_dog.update(state: 'deleted')
+    end
   end
 
   protected

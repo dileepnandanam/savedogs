@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2021_02_19_162715) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "parent_id"
     t.string "place"
-    t.string "state"
+    t.string "state", default: "new"
   end
 
   create_table "users", force: :cascade do |t|

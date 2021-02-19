@@ -2,9 +2,10 @@ import React, {useState, useEffect} from 'react'
 import {Link, Redirect, useParams} from 'react-router-dom'
 import {useForm} from 'react-hook-form'
 import axios from 'axios'
-import {currentUser} from '../../../src/user'
+import {currentUser, authHeaders} from '../../../src/user'
 
 const Dog = (props) => {
+  const [deleteDog, setDeleteDog] = useState(false)
   const openMap = () => {
     const coord = `${props.lat},${props.lngt}`
     if( (navigator.platform.indexOf("iPhone") != -1) 
@@ -22,8 +23,22 @@ const Dog = (props) => {
       )
     }
   }
+
+  const deleteDogHandle = () => {
+    axios.delete(`/api/stray_dogs/${props.id}`, {headers: authHeaders()})
+      .then(() => {
+        setDeleteDog(true)
+      })
+  }
+  
+  const delete_link = () => {
+    if(currentUser() && props.user_id == currentUser().id)
+      return(<button className="dog-delete" onClick={deleteDogHandle}>Delete</button>)
+    else
+      return null
+  }
   return(
-    <div className="dog">
+    <div className={deleteDog ? "deleted dog" : "dog"}>
       <Link to={`/home/dogs-need-shelter/${props.id}`}>
         <img src={props.image} />
       </Link>
@@ -37,9 +52,9 @@ const Dog = (props) => {
         {props.description}
       </div>
       {edit_link()}
+      {delete_link()}
 
     </div>
   )
 }
-
 export {Dog}
