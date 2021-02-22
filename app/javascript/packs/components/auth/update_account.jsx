@@ -33,7 +33,7 @@ export const UpdateAccount = () => {
 
           <label>Petfoods receiving address</label>
           <div className="clearfix" />
-          <textarea name="address" ref={register({required: true})} placeholder="name"/>
+          <textarea name="address" ref={register({required: true})} placeholder="address"/>
           <div className="clearfix" />
 
           <button type="submit">Update</button>
