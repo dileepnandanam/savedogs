@@ -1,4 +1,4 @@
-class Api::StrayDogsController < ApplicationController
+class Api::StrayDogsController < Api::BaseController
   def index
     @dogs = StrayDogFinder.new(params[:lat], params[:lngt], params[:mine], current_user)
       .find

@@ -24,4 +24,23 @@ class Api::UsersController < ApplicationController
       render json: @user.errors.messages, status: 422
     end
   end
+
+  def log_as_guest
+    name = "guest_#{User.count}"
+    password = Devise.friendly_token
+    @user = User.create(
+      email: "#{name}@savedogs.com",
+      password: password,
+      password_confirmation: password,
+      name: name
+    )
+    tokens = @user.create_new_auth_token                      
+    @user.save
+    headers['access-token'] = (tokens['access-token']).to_s
+    headers['client'] =  (tokens['client']).to_s
+    headers['expiry'] =  (tokens['expiry']).to_s
+    headers['uid'] =@user.uid             
+    headers['token-type'] = (tokens['token-type']).to_s
+    render json: @user
+  end
 end
