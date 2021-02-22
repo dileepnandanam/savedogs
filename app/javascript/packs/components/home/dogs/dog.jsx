@@ -38,7 +38,7 @@ const Dog = (props) => {
       return null
   }
   return(
-    <div className={deleteDog ? "deleted dog" : "dog"}>
+    <div className="dog" style={{transform: deleteDog ? 'scale(0,0)' : 'scale(1,1)', maxHeight: deleteDog ? '0px' : '9999px'}}>
       <Link to={`/home/dogs-need-shelter/${props.id}`}>
         <img src={props.image} />
       </Link>

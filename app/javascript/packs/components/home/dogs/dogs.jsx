@@ -3,28 +3,32 @@ import {Link, Redirect, useParams} from 'react-router-dom'
 import {useForm} from 'react-hook-form'
 import axios from 'axios'
 import {Dog} from './dog'
+import {authHeaders} from '../../../src/user'
 
 const Dogs = (props) => {
   const [data, setData] = useState({dogs: [], next_page: 1})
 
   useEffect(() => {
     loadDogs(1)
-  }, [props.location])
+  }, [props.location, props.mine])
 
   const endpoint = (page_no) => {
+    let url = `/api/stray_dogs/?page=${page_no}`
+
     if(props.location.lat)
-      return `/api/stray_dogs/?page=${page_no}&lat=${props.location.lat}&lngt=${props.location.lngt}`
-    else
-      return `/api/stray_dogs/?page=${page_no}`
+      url = `${url}&lat=${props.location.lat}&lngt=${props.location.lngt}`
+    if(props.mine)
+      url = `${url}&mine=true`
+    return url
   }
   const loadNextDogs = (page_no) => {
-    axios.get(endpoint(page_no))
+    axios.get(endpoint(page_no), {headers: authHeaders()})
       .then((res) => {
         setData({dogs: [...data.dogs,...res.data.dogs], next_page: parseInt(res.data.next_page)})
       })
   }
   const loadDogs = (page_no) => {
-    axios.get(endpoint(page_no))
+    axios.get(endpoint(page_no), {headers: authHeaders()})
       .then((res) => {
         setData({dogs: res.data.dogs, next_page: parseInt(res.data.next_page)})
       })

@@ -184,9 +184,10 @@ body {
   background: transparent;
   color: #537af6;
 }
-.dog {
-  transition: display 0.5s ease-out 0s;
+.dog-delete:hover {
+  text-decoration: underline;
 }
-.deleted.dog {
-  display: none;
+.dog {
+  transition: transform 0.5s linear 0s, max-height 0.5s linear 0s;
+  overflow: hidden;
 }

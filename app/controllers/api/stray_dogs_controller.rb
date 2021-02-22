@@ -1,6 +1,8 @@
 class Api::StrayDogsController < ApplicationController
   def index
-    @dogs = StrayDog.nearby(params[:lat], params[:lngt]).includes(:user)
+    @dogs = StrayDogFinder.new(params[:lat], params[:lngt], params[:mine], current_user)
+      .find
+      .includes(:user)
       .paginate(per_page: 5, page: params[:page])
 
     render json: {
