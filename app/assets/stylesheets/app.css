@@ -175,6 +175,7 @@ body {
 }
 .dog-button .inner:hover {
   transform: scale(1.1, 1.1);
+  text-decoration: none;
 }
 
 .dog-place {
@@ -202,4 +203,31 @@ body {
 }
 .report-heading {
   text-align: center;
+}
+.fb-share-button {
+  padding: 7px;
+  background-color: blue;
+  color: white;
+  border-radius: 8px;
+  width: 110px;
+  text-align: center;
+  display: block;
+  margin: auto;
+  margin-bottom: 20px;
+  transition: transform 0.2s linear 0s;
+  font-size: 22px;
+}
+.fb-share-button:hover {
+  text-decoration: none;
+  color: white;
+  transform: scale(1.1, 1.1);
+}
+.f-button {
+  display: inline-block;
+  padding: 0px 11px 0px;
+  margin-right: 8px;
+  background: white;
+  color: blue;
+  border-radius: 4px;
+  font-size: 28px;
 }

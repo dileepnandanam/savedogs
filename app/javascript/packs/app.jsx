@@ -8,11 +8,14 @@ import {useState, useEffect} from 'react'
 import {BrowserRouter, Link, Switch, Route, Redirect} from 'react-router-dom'
 import {Nav} from './components/nav'
 import {currentUser} from './src/user'
+import {fetchConfig} from './src/config'
 import {Home} from './components/home'
 import {Auth} from './components/auth'
 const App = () => {
   const [user, setCurrentUser] = useState(currentUser())
-  
+  useEffect(() => {
+    fetchConfig()
+  }, [])
   return(
     <BrowserRouter>
       <div className="main-page">

@@ -3,6 +3,7 @@ import {Link, Redirect, useParams} from 'react-router-dom'
 import {useForm} from 'react-hook-form'
 import axios from 'axios'
 import {currentUser, authHeaders} from '../../../src/user'
+import {getConfig} from '../../../src/config'
 
 const Dog = (props) => {
   const [deleteDog, setDeleteDog] = useState(false)
@@ -37,6 +38,13 @@ const Dog = (props) => {
     else
       return null
   }
+
+  const sharer_link = () => (
+    <a className="fb-share-button" href={`https://www.facebook.com/sharer.php?p[url]=${getConfig('BASE_URL')}/home/dogs-need-shelter/${props.id}`}>
+      <div className="f-button">f</div>
+      Share
+    </a>
+  )
   return(
     <div className="dog" style={{transform: deleteDog ? 'scale(0,0)' : 'scale(1,1)', maxHeight: deleteDog ? '0px' : '9999px'}}>
       <Link to={`/home/dogs-need-shelter/${props.id}`}>
@@ -53,6 +61,7 @@ const Dog = (props) => {
       </div>
       {edit_link()}
       {delete_link()}
+      {sharer_link()}
 
     </div>
   )

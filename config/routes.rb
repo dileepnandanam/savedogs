@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       get :get_current_user, on: :collection
       put :update_current_user, on: :collection
     end
+
+    resources :app_configs
   end
   root to: 'apps#index'
   get '/', to: 'apps#index'
