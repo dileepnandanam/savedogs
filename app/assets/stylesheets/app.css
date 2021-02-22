@@ -231,3 +231,15 @@ body {
   border-radius: 4px;
   font-size: 28px;
 }
+.login-as-guest {
+  border: none;
+  padding: 17px;
+  display: block;
+  width: 169px;
+  margin: auto;
+  margin-top: 20px;
+  background: blue;
+  color: white;
+  border-radius: 10px;
+  font-size: 20px;
+}

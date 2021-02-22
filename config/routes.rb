@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   scope '/api', module: 'api' do
     resources :stray_dogs
     resources :users do
-      get :log_as_guest, on: :collection
+      post :log_as_guest, on: :collection
       get :email_taken, on: :collection
       get :get_current_user, on: :collection
       put :update_current_user, on: :collection

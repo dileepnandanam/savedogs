@@ -41,6 +41,10 @@ class Api::UsersController < ApplicationController
     headers['expiry'] =  (tokens['expiry']).to_s
     headers['uid'] =@user.uid             
     headers['token-type'] = (tokens['token-type']).to_s
-    render json: @user
+    render json: {
+      data: {
+        id: @user.id
+      }
+    }
   end
 end
