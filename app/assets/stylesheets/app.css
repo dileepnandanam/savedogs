@@ -61,6 +61,7 @@ body {
   max-width: 550px;
   margin: auto;
   display: block;
+  padding: 12px;
 }
 .dog-form label {
   margin-top: 12px;
