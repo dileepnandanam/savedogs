@@ -152,22 +152,31 @@ body {
   margin-top: 52px;
   max-width: 300px;
 }
-.find-nearby {
+.dog-button {
+  padding: 0px 8px;
+  display: inline-block;
+  margin-bottom: 8px
+}
+.dog-button .inner {
   border: none;
   padding: 12px;
-  margin: 8px;
   background: #3e8fd6;
-  transition: padding 0.2s linear 0s, margin 0.2s linear 0s;
+  transition: transform 0.2s linear 0s;
   font-size: 20px;
   color: black;
+  text-align: center;
   display: inline-block;
+  width: 100%;
 }
-.find-nearby:hover, .find-nearby:active {
-  margin: 4px;
-  padding: 16px;
-  text-decoration: none;
-  color: black;
+@media(max-width: 580px) {
+  .dog-button {
+    width: 100%;
+  }
 }
+.dog-button .inner:hover {
+  transform: scale(1.1, 1.1);
+}
+
 .dog-place {
   text-align: center;
   font-size: 22px;
