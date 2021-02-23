@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom'
 import {currentUser} from '../src/user'
 import 'bootstrap/dist/js/bootstrap.js';
 import $ from 'jquery';
-import Popper from 'popper.js';
 
 const Nav = (props) => {
   return(
