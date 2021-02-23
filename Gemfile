@@ -48,8 +48,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "bootstrap", "~> 4.6"
 gem 'devise_token_auth'
 gem 'omniauth'
-
+gem "aws-sdk-s3", require: false
 gem "will_paginate", "~> 3.3"
-
 gem "pry", "~> 0.13.1"
 gem 'geocoder'
