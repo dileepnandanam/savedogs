@@ -61,10 +61,6 @@ class Api::StrayDogsController < Api::BaseController
   end
 
   def image_url(dog)
-    if Rails.env.production?
-      dog.image.attachment.service_url
-    else
-      rails_blob_path(dog.image, only_path: true)
-    end
+    rails_blob_path(dog.image, only_path: true)
   end
 end
