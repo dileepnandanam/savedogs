@@ -27,20 +27,22 @@ export const DogsContainer = () => {
   }
   return(
     <div>
-      <div className="dog-button">
-        <button className="inner" onClick={getLocation}>
-          {location.lat ? "Show dogs from all places" : "Find dogs nearby"}
-        </button>
-      </div>
-      <ShowForUser>
+      <div className="filter-buttons">
         <div className="dog-button">
-          <button className="inner" onClick={getMine}>
-            {mine ? "Show every reports" : "Show my reports"}
+          <button className="inner" onClick={getLocation}>
+            {location.lat ? "Show dogs from all places" : "Find dogs nearby"}
           </button>
         </div>
-      </ShowForUser>
-      <div className="dog-button">
-        <Link className="inner" to="/home/report-a-dog" >Report a Dog</Link>
+        <ShowForUser>
+          <div className="dog-button">
+            <button className="inner" onClick={getMine}>
+              {mine ? "Show every reports" : "Show my reports"}
+            </button>
+          </div>
+        </ShowForUser>
+        <div className="dog-button">
+          <Link className="inner" to="/home/report-a-dog" >Report a Dog</Link>
+        </div>
       </div>
       <ShowForUser>
         <h2 className="report-heading">

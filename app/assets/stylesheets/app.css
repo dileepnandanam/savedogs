@@ -169,9 +169,18 @@ body {
   text-align: center;
   display: inline-block;
   width: 100%;
+  min-width: 269px;
 }
-@media(max-width: 580px) {
+.filter-buttons {
+  width: 855px;
+  display: block;
+  margin: auto;
+}
+@media(max-width: 855px) {
   .dog-button {
+    width: 100%;
+  }
+  .filter-buttons {
     width: 100%;
   }
 }
