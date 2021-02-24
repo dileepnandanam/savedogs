@@ -131,7 +131,8 @@ body {
   font-size: 20px;
 }
 .forgot-password {
-  margin-left: 12px
+  margin-top: 12px;
+  display: block;
 }
 .edit-dog-link {
   display: block;
