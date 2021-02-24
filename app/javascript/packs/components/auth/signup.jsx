@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import axios from 'axios'
 import {Redirect} from 'react-router-dom'
 import {setUserFrom, authHeaders, currentUser} from '../../src/user'
-
+import {getConfig} from '../../src/config'
 class Signup extends React.Component {
   constructor(props) {
     super(props)
@@ -23,11 +23,10 @@ function SignupForm(props) {
   const {register, handleSubmit, errors, getValues} = useForm()
 
   const onSubmit = function(data) {
-    axios.post('/auth', {...data, confirm_success_url: 'http://localhost:3000/email_confirm'}, {
+    axios.post('/auth', {...data, confirm_success_url: `${getConfig('BASE_URL')}/email_confirm`}, {
       'Content-type': 'application/json'
     }).then(function(res) {
-        setUserFrom(res)
-        props.setCurrentUser(currentUser())
+        window.location.href = `${getConfig('BASE_URL')}/user/confirmation_sent`
     })
   }
 

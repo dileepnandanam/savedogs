@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
   root to: 'apps#index'
   get '/', to: 'apps#index'
+  get '/email_confirm',  to: 'apps#index'
   get '/home/*path', to: 'apps#index'
   get '/user/*path', to: 'apps#index'
 

@@ -36,6 +36,7 @@ class Api::UsersController < ApplicationController
     )
     tokens = @user.create_new_auth_token                      
     @user.save
+    @user.confirm
     headers['access-token'] = (tokens['access-token']).to_s
     headers['client'] =  (tokens['client']).to_s
     headers['expiry'] =  (tokens['expiry']).to_s

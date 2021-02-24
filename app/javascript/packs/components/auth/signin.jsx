@@ -59,6 +59,7 @@ function SigninForm(props) {
         <button type="submit" className="register-button button">Login</button>
         <Link className="forgot-password" to='/user/forgot_password'>Forgot Password</Link>
         <Link className="forgot-password" to='/user/signup'>Sign Up</Link>
+        <Link className="forgot-password" to='/user/resend_confirmation'>Resend confirmation email</Link>
       </form>
       <button className="login-as-guest" onClick={loginAsGuest}>Continue as Guest</button>
     </div>
