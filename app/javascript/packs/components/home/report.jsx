@@ -43,12 +43,12 @@ const Report = (props) => {
     return(
       <div className="p-4 report-dog">
         <form onSubmit={handleSubmit(onSubmit)} className="dog-form">
-          <label>Upload Photo</label>
+          <label>Upload Photo/Video</label>
           <div className="clearfix" />
           <input type="file" name="image" ref={register({required: !props.isEditing})} />
           <div className="clearfix" />
           <div className="error">
-            {errors.image && "Upload photo"}
+            {errors.image && "Upload photo/video"}
           </div>
           <div className="clearfix" />
 

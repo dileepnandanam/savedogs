@@ -4,6 +4,7 @@ import axios from 'axios'
 import {Redirect} from 'react-router-dom'
 import {setUserFrom, authHeaders, currentUser} from '../../src/user'
 import {getConfig} from '../../src/config'
+
 class Signup extends React.Component {
   constructor(props) {
     super(props)
@@ -22,15 +23,15 @@ class Signup extends React.Component {
 function SignupForm(props) {
   const {register, handleSubmit, errors, getValues} = useForm()
 
+  const [success, setSuccess] = useState(false)
   const onSubmit = function(data) {
     axios.post('/auth', {...data, confirm_success_url: `${getConfig('BASE_URL')}/email_confirm`}, {
       'Content-type': 'application/json'
     }).then(function(res) {
-        window.location.href = `${getConfig('BASE_URL')}/user/confirmation_sent`
+        setSuccess(true)
     })
   }
-
-  return(
+  const form = () => (
     <div className="dog-form">
       <form onSubmit={handleSubmit(onSubmit)} className="form">
         <label>Name</label>
@@ -73,6 +74,11 @@ function SignupForm(props) {
 
         <button type="submit" className="register-button button">Signup</button>
       </form>
+    </div>
+  )
+  return(
+    <div>
+      {success ? <Redirect to="/user/confirmation_sent" /> : form()}
     </div>
   )
 }
