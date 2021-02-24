@@ -45,10 +45,22 @@ const Dog = (props) => {
       Share
     </a>
   )
+
+  const attachment = () => {
+    if(props.attachment_type == "video")
+      return(
+        <video src={props.image} controls></video>
+      )
+    else
+      return(
+        <img src={props.image} />
+      )
+  }
   return(
     <div className="dog" style={{transform: deleteDog ? 'scale(0,0)' : 'scale(1,1)', maxHeight: deleteDog ? '0px' : '9999px'}}>
-      <Link to={`/home/dogs-need-shelter/${props.id}`}>
-        <img src={props.image} />
+      {attachment()}
+      <Link className="reported-date" to={`/home/dogs-need-shelter/${props.id}`}>
+        {props.created_at}
       </Link>
       <div className="marker" onClick={openMap}>
         <img src={require('../../../../images/marker.png')} />

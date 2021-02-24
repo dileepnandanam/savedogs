@@ -56,7 +56,9 @@ class Api::StrayDogsController < Api::BaseController
       lat: dog.lat,
       lngt: dog.lngt,
       place: dog.place,
-      description: dog.description
+      description: dog.description,
+      created_at: dog.created_at.strftime('%d %B %y'),
+      attachment_type: video_or_image?(dog.image)
     }
   end
 
@@ -65,6 +67,14 @@ class Api::StrayDogsController < Api::BaseController
       dog.image.attachment.service_url
     else
       rails_blob_path(dog.image, only_path: true)
+    end
+  end
+
+  def video_or_image?(image)
+    if image.content_type.start_with? 'video'
+      'video'
+    else
+      'image'
     end
   end
 end

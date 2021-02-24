@@ -97,7 +97,7 @@ body {
   width: 100%;
   display: inline-block;
 }
-.dog img {
+.dog img, video {
   width: 100%;
   max-width: 500px;
   margin: auto;
@@ -244,4 +244,11 @@ body {
   color: white;
   border-radius: 10px;
   font-size: 20px;
+}
+.reported-date {
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 22px;
 }
