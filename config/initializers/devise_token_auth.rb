@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 DeviseTokenAuth.setup do |config|
-  config.default_password_reset_url = Rails.env.production? ? 'https://example.com/user/password_reset' : 'http://localhost:3000/user/password_reset'
+  config.default_password_reset_url = Rails.env.production? ? 'https://savedog.herokuapp.com/user/password_reset' : 'http://localhost:3000/user/password_reset'
   # By default the authorization headers will change after each request. The
   # client is responsible for keeping track of the changing tokens. Change
   # this to false to prevent the Authorization header from changing after
