@@ -60,7 +60,22 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "savedogs_production"
 
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_caching = false
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { :host => 'http://localhost:3000' }
+  config.action_mailer.default_options = { from: 'streetdogs.in.india@gmail.co' }
+  config.action_mailer.smtp_settings  = {            
+    :address              => "smtp.gmail.com", 
+    :port                 => 465,
+    :domain               => 'localhost:3000',               
+    :user_name            => 'streetdogs.in.india@gmail.com',
+    :password             => ENV['GMAIL_PASSWORD'],         
+    :authentication       => 'plain',
+    :ssl                  => true,
+    :tls                  => true,
+    :enable_starttls_auto => true,
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
