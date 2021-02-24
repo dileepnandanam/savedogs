@@ -27,7 +27,7 @@ export const DogsContainer = () => {
   }
   return(
     <div>
-      <div className="filter-buttons">
+      <div className="filter-buttons" style={{width: currentUser() ? '855px' : '570px'}}>
         <div className="dog-button">
           <button className="inner" onClick={getLocation}>
             {location.lat ? "Show dogs from all places" : "Find dogs nearby"}

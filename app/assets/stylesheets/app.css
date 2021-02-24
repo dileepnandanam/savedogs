@@ -176,12 +176,12 @@ body {
   display: block;
   margin: auto;
 }
-@media(max-width: 855px) {
+@media(max-width: 885px) {
   .dog-button {
     width: 100%;
   }
   .filter-buttons {
-    width: 100%;
+    width: 100% !important;
   }
 }
 .dog-button .inner:hover {
