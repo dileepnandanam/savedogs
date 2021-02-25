@@ -22,7 +22,7 @@ const Report = (props) => {
     if(data.image[0])  
       fData.append('stray_dog[image]', data.image[0])
     if(props.isEditing)
-      axios.put(`/api/stray_dogs/${dog_id}`, fData, {})
+      axios.put(`/api/stray_dogs/${dog_id}`, fData, {headers: authHeaders()})
         .then((res) => {
           setId(res.data.id)
           setDogCreated(true)
@@ -41,7 +41,7 @@ const Report = (props) => {
   }
   const form = () => {
     return(
-      <div className="p-4 report-dog">
+      <div className="report-dog">
         <form onSubmit={handleSubmit(onSubmit)} className="dog-form">
           <label>Upload Photo/Video</label>
           <div className="clearfix" />

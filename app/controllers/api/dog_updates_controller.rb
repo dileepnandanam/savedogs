@@ -1,6 +1,7 @@
-class DogUpdatesController < ApplicationController
+class Api::DogUpdatesController < Api::BaseController
   def index
     @dog_updates = DogUpdate.where(dog_id: params[:dog_id])
+    render json: @dog_updates.map {|dog_update| attributes_for(dog_update)}
   end
 
   def create
@@ -29,8 +30,9 @@ class DogUpdatesController < ApplicationController
 
   def attributes_for(dog_update)
     {
+      id: dog_update.id,
       description: dog_update.description,
-      created_at: dog_update.created_at,
+      created_at: dog_update.created_at.strftime('%d %B %y'),
       user_id: dog_update.user_id,
       image: image_url(dog_update),
       attachment_type: video_or_image?(dog_update.image)
@@ -38,6 +40,9 @@ class DogUpdatesController < ApplicationController
   end
 
   def image_url(dog_update)
+    if dog_update.image.blank?
+      return ''
+    end
     if Rails.env.production?
       dog_update.image.attachment.service_url
     else
@@ -46,6 +51,9 @@ class DogUpdatesController < ApplicationController
   end
 
   def video_or_image?(image)
+    if image.blank?
+      return ''
+    end
     if image.content_type.start_with? 'video'
       'video'
     else

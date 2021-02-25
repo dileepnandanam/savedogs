@@ -3,6 +3,8 @@ import {Link, Redirect, useParams} from 'react-router-dom'
 import {useForm} from 'react-hook-form'
 import axios from 'axios'
 import {Dog} from './dog'
+import {DogUpdates} from './dog_updates/dog_updates'
+
 const DogContainer = () => {
   const [data, setData] = useState({})
   const {id} = useParams()
@@ -12,8 +14,13 @@ const DogContainer = () => {
         setData(res.data)
       })
   }, [])
+
   return(
-    <Dog {...data}/>
+    <div>
+      <h2 className="text-center">Dog Story</h2>
+      <Dog {...data}/>
+      <DogUpdates dog_id={id} />
+    </div>
   )
 }
 
