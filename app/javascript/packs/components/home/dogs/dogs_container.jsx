@@ -50,7 +50,7 @@ export const DogsContainer = () => {
           {location.lat ? "in your location." : "in all places."}
         </h2>
       </ShowForUser>
-      {loading ? <Loading /> : <Dogs location={location} mine={mine}/>}
+      {loading ? <Loading message={"Fetching location, allow browser to access location service."}/> : <Dogs location={location} mine={mine}/>}
     </div>
   )
 }

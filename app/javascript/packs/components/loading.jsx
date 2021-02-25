@@ -1,7 +1,10 @@
 import React from 'react'
 
-export const Loading = () => {
+export const Loading = (props) => {
   return(
-    <img src={require('../../images/loading.gif')} className="loading"/>
+    <div className="text-center">
+      {props.message}
+      <img src={require('../../images/loading.gif')} className="loading"/>
+    </div>
   )
 }
