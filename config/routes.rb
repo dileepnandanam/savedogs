@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   scope '/api', module: 'api' do
     resources :stray_dogs
+    resources :dog_updates
     resources :users do
       post :log_as_guest, on: :collection
       get :email_taken, on: :collection
