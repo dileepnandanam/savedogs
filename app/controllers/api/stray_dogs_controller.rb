@@ -31,7 +31,11 @@ class Api::StrayDogsController < Api::BaseController
   end
 
   def show
-    result = attributes_for StrayDog.find_by_id(params[:id])
+    stray_dog = StrayDog.live.find_by_id(params[:id])
+    unless stray_dog
+      render plain: 'not found', status: 404 and return
+    end
+    result = attributes_for stray_dog
     render json: result
   end
 

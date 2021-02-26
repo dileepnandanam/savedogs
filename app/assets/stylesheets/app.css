@@ -210,7 +210,6 @@ body {
   text-decoration: underline;
 }
 .dog {
-  transition: transform 0.5s linear 0s, max-height 0.5s linear 0s;
   overflow: hidden;
 }
 .report-heading {

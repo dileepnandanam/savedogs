@@ -57,7 +57,7 @@ const Dog = (props) => {
       )
   }
   return(
-    <div className="dog" style={{transform: deleteDog ? 'scale(0,0)' : 'scale(1,1)', maxHeight: deleteDog ? '0px' : '9999px'}}>
+    <div className="dog" style={{transition: 'transform 0.1s linear 0s, max-height 0.1s linear 0s', transform: deleteDog ? 'scale(0,0)' : 'scale(1,1)', maxHeight: deleteDog ? '0px' : '9999px'}}>
       {attachment()}
       <Link className="reported-date" to={`/home/dogs-need-shelter/${props.id}`}>
         {props.created_at}
