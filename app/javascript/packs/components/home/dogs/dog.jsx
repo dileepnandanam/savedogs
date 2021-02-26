@@ -81,7 +81,7 @@ const Dog = (props) => {
       </div>
       {edit_link()}
       {delete_link()}
-      {sharer_link()}
+      {false ? sharer_link() : null}
 
     </div>
   )

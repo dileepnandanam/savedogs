@@ -17,7 +17,7 @@ const DogContainer = () => {
 
   return(
     <div>
-      <h2 className="text-center">Dog Story</h2>
+      <h2 className="text-center section-header">Dog Story</h2>
       <Dog {...data}/>
       <DogUpdates dog_id={id} />
     </div>

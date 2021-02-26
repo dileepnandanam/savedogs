@@ -9,7 +9,7 @@ const NeedShelter = () => {
     <div className="page">
       <Switch>
         <Route path="/" exact>
-          <h1 className="text-center">Dogs Need Shelter</h1>
+          <h1 className="text-center section-header">Dogs Need Help</h1>
           <DogsContainer />
         </Route>
         <Route path="/home/dogs-need-shelter" exact>
