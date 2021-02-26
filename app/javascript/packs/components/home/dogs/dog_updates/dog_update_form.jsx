@@ -32,6 +32,8 @@ export const DogUpdateForm = (props) => {
         <div className="clearfix" />
         <textarea ref={register({require: true})} name="description" />
         <div className="clearfix" />
+        {errors.description && errors.description.message}
+        <div className="clearfix" />
 
         <button type="submit">Post</button>
       </form>

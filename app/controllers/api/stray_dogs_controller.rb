@@ -60,9 +60,10 @@ class Api::StrayDogsController < Api::BaseController
       lat: dog.lat,
       lngt: dog.lngt,
       place: dog.place,
-      description: dog.description,
-      created_at: dog.created_at.strftime('%d %B %y'),
-      attachment_type: video_or_image?(dog.image)
+      description: description_segments_of(dog.description),
+      created_at: dog.created_at.strftime('%d %B %Y'),
+      attachment_type: video_or_image?(dog.image),
+      dog_update_count: dog.dog_update_count
     }
   end
 

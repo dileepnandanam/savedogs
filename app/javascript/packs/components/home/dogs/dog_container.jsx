@@ -6,7 +6,7 @@ import {Dog} from './dog'
 import {DogUpdates} from './dog_updates/dog_updates'
 
 const DogContainer = () => {
-  const [data, setData] = useState({})
+  const [data, setData] = useState({description: []})
   const {id} = useParams()
   useEffect(() => {
     axios.get(`/api/stray_dogs/${id}`)

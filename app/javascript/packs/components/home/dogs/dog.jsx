@@ -59,9 +59,12 @@ const Dog = (props) => {
   return(
     <div className="dog" style={{transition: 'transform 0.1s linear 0s, max-height 0.1s linear 0s', transform: deleteDog ? 'scale(0,0)' : 'scale(1,1)', maxHeight: deleteDog ? '0px' : '9999px'}}>
       {attachment()}
-      <Link className="reported-date" to={`/home/dogs-need-shelter/${props.id}`}>
-        {props.created_at}
+      <Link className="update-link" to={`/home/dogs-need-shelter/${props.id}`}>
+        {props.dog_update_count} update{parseInt(props.dog_update_count) == 1 ? '' : 's'}
       </Link>
+      <div className="text-center reported-date">
+        {props.created_at}
+      </div>
       <div className="marker" onClick={openMap}>
         <img src={require('../../../../images/marker.png')} />
       </div>
@@ -69,7 +72,12 @@ const Dog = (props) => {
         {props.place}
       </div>
       <div className="description">
-        {props.description}
+        {props.description.map((segment, i) => (
+          <span key={i}>
+            {segment}
+            <br />
+          </span>
+        ))}
       </div>
       {edit_link()}
       {delete_link()}

@@ -186,7 +186,7 @@ body {
   }
 }
 .dog-button .inner:hover {
-  transform: scale(1.1, 1.1);
+  transform: scale(1.01, 1.01);
   text-decoration: none;
 }
 
@@ -253,6 +253,13 @@ body {
   color: white;
   border-radius: 10px;
   font-size: 20px;
+}
+.update-link {
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 22px;
 }
 .reported-date {
   width: 100%;

@@ -31,8 +31,8 @@ class Api::DogUpdatesController < Api::BaseController
   def attributes_for(dog_update)
     {
       id: dog_update.id,
-      description: dog_update.description,
-      created_at: dog_update.created_at.strftime('%d %B %y'),
+      description: description_segments_of(dog_update.description),
+      created_at: dog_update.created_at.strftime('%d %B %Y'),
       user_id: dog_update.user_id,
       image: image_url(dog_update),
       attachment_type: video_or_image?(dog_update.image)

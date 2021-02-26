@@ -27,8 +27,8 @@ export const DogUpdates = (props) => {
   return(
     <div>
       {dog_updates.map((dog_update) => (<DogUpdate dog_update={dog_update} key={dog_update.id} />))}
-      <button className="update-form-toggle" onClick={showForm}>Post Update</button>
       {formVisible ? <DogUpdateForm dog_id={props.dog_id} appendUpdate={appendUpdate}/> : null}
+      <button className="update-form-toggle" onClick={showForm}>Post Update</button>
     </div>
   )
 }
