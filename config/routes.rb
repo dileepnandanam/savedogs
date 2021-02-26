@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :stray_dogs
     resources :dog_updates
     resources :users do
+      post :login_from_facebook, on: :collection
       post :log_as_guest, on: :collection
       get :email_taken, on: :collection
       get :get_current_user, on: :collection

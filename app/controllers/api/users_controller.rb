@@ -40,7 +40,23 @@ class Api::UsersController < ApplicationController
     headers['access-token'] = (tokens['access-token']).to_s
     headers['client'] =  (tokens['client']).to_s
     headers['expiry'] =  (tokens['expiry']).to_s
-    headers['uid'] =@user.uid             
+    headers['uid'] = @user.uid             
+    headers['token-type'] = (tokens['token-type']).to_s
+    render json: {
+      data: {
+        id: @user.id
+      }
+    }
+  end
+
+  def login_from_facebook
+    fb_access_token = params[:fb_access_token]
+    @user = FbAuth.new(fb_access_token).login
+    tokens = @user.create_new_auth_token
+    headers['access-token'] = (tokens['access-token']).to_s
+    headers['client'] =  (tokens['client']).to_s
+    headers['expiry'] =  (tokens['expiry']).to_s
+    headers['uid'] = @user.uid             
     headers['token-type'] = (tokens['token-type']).to_s
     render json: {
       data: {

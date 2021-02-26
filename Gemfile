@@ -52,3 +52,4 @@ gem "aws-sdk-s3", require: false
 gem "will_paginate", "~> 3.3"
 gem "pry", "~> 0.13.1"
 gem 'geocoder'
+gem 'httparty'

@@ -3,6 +3,7 @@ import {useForm} from 'react-hook-form'
 import axios from 'axios'
 import {setUserFrom, authHeaders, currentUser} from '../../src/user'
 import {Link} from 'react-router-dom'
+import {Facebook} from './facebook'
 
 class Signin extends React.Component {
   constructor(props) {
@@ -37,7 +38,7 @@ function SigninForm(props) {
     axios.post('/api/users/log_as_guest',{},{})
       .then((res) => {
         setUserFrom(res)
-        props.setCurrentUser(currentUser)
+        props.setCurrentUser(currentUser())
       })
   }
   return(
@@ -62,6 +63,7 @@ function SigninForm(props) {
         <Link className="forgot-password" to='/user/resend_confirmation'>Resend confirmation email</Link>
       </form>
       <button className="login-as-guest" onClick={loginAsGuest}>Continue as Guest</button>
+      <Facebook setCurrentUser={props.setCurrentUser}/>
     </div>
   )
 }
