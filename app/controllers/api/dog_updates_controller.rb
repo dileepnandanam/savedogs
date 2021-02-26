@@ -14,7 +14,7 @@ class Api::DogUpdatesController < Api::BaseController
   end
 
   def destroy
-    @dog_update = DogUpdate.where(id: params[:id], user_id: current_user.id)
+    @dog_update = DogUpdate.where(id: params[:id], user_id: current_user.id).first
     if @dog_update && @dog_update.delete
       render json: {success: true}
     else
