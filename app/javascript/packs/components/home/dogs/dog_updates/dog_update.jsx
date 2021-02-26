@@ -36,7 +36,12 @@ export const DogUpdate = (props) => {
         {props.dog_update.created_at}
       </div>
       <div className="description text-center">
-        {props.dog_update.description}
+        {props.dog_update.description.map((segment, i) => (
+          <span key={i}>
+            {segment}
+            <br />
+          </span>
+        ))}
       </div>
       {deleteLink()}
     </div>
