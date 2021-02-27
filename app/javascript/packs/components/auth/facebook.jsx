@@ -21,7 +21,7 @@ export const Facebook = (props) => {
   return(
     <FacebookLogin
       appId={getConfig('FB_APP_ID')}
-      autoLoad={true}
+      autoLoad={false}
       fields="name,email,picture"
       callback={responseFacebook}
       cssClass="fb-login"

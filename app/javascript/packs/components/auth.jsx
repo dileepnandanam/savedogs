@@ -10,6 +10,7 @@ import {ResendConfirmation, ConfirmationSent} from './auth/resend_confirmation'
 import {EmailConfirm} from './auth/email_confirm'
 import {UpdateAccount, UpdateAccountSuccess} from './auth/update_account'
 import {setCurrentUser} from '../src/user'
+import {PrivacyPolicy} from './auth/privacy_policy'
 export const Auth = (props) => {
   return(
     <div className="user">
@@ -45,6 +46,9 @@ export const Auth = (props) => {
       </Route>
       <Route path="/user/update_account/success">
         <UpdateAccountSuccess />
+      </Route>
+      <Route path="/user/privacy_policy">
+        <PrivacyPolicy />
       </Route>
     </div>
   )
