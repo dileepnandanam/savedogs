@@ -316,3 +316,17 @@ body {
 .section-header {
   padding: 12px;
 }
+.delete-cancel, .delete-confirm, .delete-account-start {
+  border: none;
+  padding: 12px;
+  margin: 12px;
+  background: red;
+  border-radius: 8px;
+}
+.confirmation-dialogue {
+  background: antiquewhite;
+  border: 1px solid red;
+  border-radius: 8px;
+  padding: 12px;
+  display: inline-block;
+}

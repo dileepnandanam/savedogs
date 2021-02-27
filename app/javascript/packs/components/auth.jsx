@@ -11,6 +11,7 @@ import {EmailConfirm} from './auth/email_confirm'
 import {UpdateAccount, UpdateAccountSuccess} from './auth/update_account'
 import {setCurrentUser} from '../src/user'
 import {PrivacyPolicy} from './auth/privacy_policy'
+import {ManageAccount} from './auth/manage_account'
 export const Auth = (props) => {
   return(
     <div className="user">
@@ -49,6 +50,9 @@ export const Auth = (props) => {
       </Route>
       <Route path="/user/privacy_policy">
         <PrivacyPolicy />
+      </Route>
+      <Route path="/user/manage_account">
+        <ManageAccount setCurrentUser={props.setCurrentUser} />
       </Route>
     </div>
   )
