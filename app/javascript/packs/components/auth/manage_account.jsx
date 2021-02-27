@@ -1,13 +1,14 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-import {authHeaders} from '../../src/user'
+import {authHeaders, removeUser} from '../../src/user'
 
-export const ManageAccount = () => {
+export const ManageAccount = (props) => {
   
   const [confirmation, setConfirmation] = useState(false)
   const deleteAccount = () => {
     axios.delete('/auth', {headers: authHeaders()})
       .then(() => {
+        removeUser()
         props.setCurrentUser(null)
       })
   }

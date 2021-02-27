@@ -26,10 +26,11 @@ class Api::UsersController < ApplicationController
   end
 
   def log_as_guest
-    name = "guest_#{User.count}"
+    name = "guest_#{SecureRandom.uuid}"
     password = Devise.friendly_token
     @user = User.create(
       email: "#{name}@savedogs.com",
+      uid: "#{name}@savedogs.com",
       password: password,
       password_confirmation: password,
       name: name

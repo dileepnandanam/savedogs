@@ -22,6 +22,7 @@ const AccountMenuSignedIn = () => {
       </button>
       <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
         <Link to="/user/signout" className="dropdown-item">Signout</Link>
+        <Link to="/user/manage_account" className="dropdown-item">Manage Account</Link>
       </div>
     </div>
   )
