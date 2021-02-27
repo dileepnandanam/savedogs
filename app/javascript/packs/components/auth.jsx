@@ -52,7 +52,7 @@ export const Auth = (props) => {
         <PrivacyPolicy />
       </Route>
       <Route path="/user/manage_account">
-        {props.user ? <ManageAccount setCurrentUser={props.setCurrentUser} /> : <Redirect to="/" />}
+        <ManageAccount setCurrentUser={props.setCurrentUser} />
       </Route>
     </div>
   )
