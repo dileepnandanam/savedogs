@@ -24,6 +24,7 @@ export const Facebook = (props) => {
       autoLoad={false}
       fields="name,email,picture"
       callback={responseFacebook}
+      disableMobileRedirect={true}
       cssClass="fb-login"
     />
   )
