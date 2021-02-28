@@ -10,6 +10,7 @@ export const ManageAccount = (props) => {
       .then(() => {
         removeUser()
         props.setCurrentUser(null)
+        setConfirmation(false)
         setDeleted(true)
       })
   }
@@ -27,7 +28,7 @@ export const ManageAccount = (props) => {
     <div className="page">
       <h2>Delete Account</h2>
       <p>Deleting account will leave the posts about dogs but erase your email.</p>
-      <button onClick={() => (setConfirmation(true))} className="delete-account-start">Delete Account</button>
+      {deleted ? null : <button onClick={() => (setConfirmation(true))} className="delete-account-start">Delete Account</button>}
       <div className="clearfix" />
       {confirmation ? confirmationDialogue() : null}
       {deleted ? <h2>Account Deleted!</h2> : null}
