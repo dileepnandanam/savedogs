@@ -55,7 +55,7 @@ class Api::StrayDogsController < Api::BaseController
   def attributes_for(dog)
     {
       id: dog.id,
-      user_id: dog.user.id,
+      user_id: dog.user_id,
       image: image_url(dog),
       lat: dog.lat,
       lngt: dog.lngt,

@@ -1,6 +1,6 @@
 class Api::DogUpdatesController < Api::BaseController
   def index
-    @dog_updates = DogUpdate.where(dog_id: params[:dog_id])
+    @dog_updates = DogUpdate.live.where(dog_id: params[:dog_id])
     render json: @dog_updates.map {|dog_update| attributes_for(dog_update)}
   end
 
@@ -15,7 +15,7 @@ class Api::DogUpdatesController < Api::BaseController
 
   def destroy
     @dog_update = DogUpdate.where(id: params[:id], user_id: current_user.id).first
-    if @dog_update && @dog_update.delete
+    if @dog_update && @dog_update.update(state: 'deleted')
       render json: {success: true}
     else
       render json: {success: false}, status: 401
