@@ -11,6 +11,8 @@ import {currentUser} from './src/user'
 import {fetchConfig} from './src/config'
 import {Home} from './components/home'
 import {Auth} from './components/auth'
+import {Banner} from './components/home/banner'
+
 const App = () => {
   const [user, setCurrentUser] = useState(currentUser())
   useEffect(() => {
@@ -20,6 +22,9 @@ const App = () => {
     <BrowserRouter>
       <div className="main-page">
         <Nav user={user}/>
+        <Switch>
+          <Route path="/" exact component={Banner} />
+        </Switch>
         <Switch>
           <Route path="/" exact>
             <Home />

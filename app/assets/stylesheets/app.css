@@ -104,11 +104,10 @@ body {
   display: block;
 }
 .dog .description {
-  font-size: 20px;
+  font-size: 18px;
   width: 100%;
   padding: 12px;
   text-align: center;
-  font-weight: bold;
 }
 .marker {
   padding: 12px;

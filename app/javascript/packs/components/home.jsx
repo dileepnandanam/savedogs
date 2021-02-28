@@ -1,6 +1,5 @@
 import React from 'react'
 import {Link, Switch, Route, useRoutMatch, Redirect} from 'react-router-dom'
-import {Banner} from './home/banner'
 import {Report} from './home/report'
 import {NeedShelter} from './home/need_shelter'
 import {Updates} from './home/updates'
@@ -9,7 +8,6 @@ import {currentUser} from '../src/user'
 const Home = () => {
   return(
     <div className="Home">
-      <Banner />
       <Switch>
         <Route path="/" exact>
           <NeedShelter />
