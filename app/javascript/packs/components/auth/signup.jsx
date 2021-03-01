@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
-import { useForm } from "react-hook-form";
+import {useForm} from "react-hook-form";
 import axios from 'axios'
 import {Redirect} from 'react-router-dom'
 import {setUserFrom, authHeaders, currentUser} from '../../src/user'
 import {getConfig} from '../../src/config'
+import {Facebook} from './facebook'
 
 class Signup extends React.Component {
   constructor(props) {
@@ -74,6 +75,8 @@ function SignupForm(props) {
 
         <button type="submit" className="register-button button">Signup</button>
       </form>
+      <Facebook setCurrentUser={props.setCurrentUser}/>
+
     </div>
   )
   return(
