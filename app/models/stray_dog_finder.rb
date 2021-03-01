@@ -7,7 +7,7 @@ class StrayDogFinder
   end
 
   def find
-    scope = StrayDog.live
+    scope = StrayDog.live.order('created_at DESC')
     if @lat.present? && @lngt.present?
       scope = scope.near([@lat.to_f, @lngt.to_f], 50)
     end
