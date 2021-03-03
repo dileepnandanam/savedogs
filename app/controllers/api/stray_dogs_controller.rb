@@ -12,6 +12,7 @@ class Api::StrayDogsController < Api::BaseController
   end
 
   def create
+    authorize StrayDog.new
     @stray_dog = StrayDog.new stray_dog_params.merge(user_id: current_user.id)
     if @stray_dog.save
       render json: attributes_for(@stray_dog)
@@ -22,6 +23,7 @@ class Api::StrayDogsController < Api::BaseController
 
   def update
     @stray_dog = StrayDog.find_by_id(params[:id])
+    authorize @stray_dog
     @stray_dog.update(stray_dog_params)
     if(@stray_dog.valid?)
       render json: attributes_for(@stray_dog)
