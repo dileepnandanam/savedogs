@@ -39,9 +39,9 @@ const Dogs = (props) => {
   }
   return(
     <div className="page">
-      {data.dogs.map((e) => {
+      {data.dogs.length > 0 ? data.dogs.map((e) => {
         return(<Dog {...e} key={e.id}/>)
-      })}
+      }) : <h3 className="text-center">No dogs found</h3>}
       {data.next_page ? <button className="view-more" onClick={loadNext}>View More</button> : false}
     </div>
   )
