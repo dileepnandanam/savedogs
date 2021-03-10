@@ -163,7 +163,7 @@ body {
   border: none;
   padding: 12px;
   background: #3e8fd6;
-  transition: transform 0.2s linear 0s;
+  transition: transform 0.1s linear 0s;
   font-size: 20px;
   color: black;
   text-align: center;
@@ -185,7 +185,7 @@ body {
   }
 }
 .dog-button .inner:hover {
-  transform: scale(1.01, 1.01);
+  transform: scale(1.05, 1.05);
   text-decoration: none;
 }
 

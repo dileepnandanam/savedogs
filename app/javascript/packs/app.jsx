@@ -12,11 +12,24 @@ import {fetchConfig} from './src/config'
 import {Home} from './components/home'
 import {Auth} from './components/auth'
 import {Banner} from './components/home/banner'
+import axios from 'axios'
+import {authHeaders} from './src/user'
 
 const App = () => {
   const [user, setCurrentUser] = useState(currentUser())
   useEffect(() => {
     fetchConfig()
+    axios.interceptors.request.use((request) => {
+      request.headers = authHeaders()
+      return(request)
+    })
+    axios.interceptors.response.use((response) => {
+      console.log(response)
+      return(response)
+    }, (error) => {
+      if(error.response.status == 401)
+        setCurrentUser(null)
+    })
   }, [])
   return(
     <BrowserRouter>

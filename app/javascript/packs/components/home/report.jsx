@@ -22,7 +22,7 @@ const Report = (props) => {
     if(data.image[0])  
       fData.append('stray_dog[image]', data.image[0])
     if(props.isEditing)
-      axios.put(`/api/stray_dogs/${dog_id}`, fData, {headers: authHeaders()})
+      axios.put(`/api/stray_dogs/${dog_id}`, fData, {})
         .then((res) => {
           setId(res.data.id)
           setDogCreated(true)
@@ -31,7 +31,7 @@ const Report = (props) => {
       navigator.geolocation.getCurrentPosition((position) => {
         fData.append('stray_dog[lat]', position.coords.latitude)
         fData.append('stray_dog[lngt]', position.coords.longitude)
-        axios.post(`/api/stray_dogs`, fData, {headers: authHeaders()})
+        axios.post(`/api/stray_dogs`, fData, {})
         .then((res) => {
           setId(res.data.id)
           setDogCreated(true)
