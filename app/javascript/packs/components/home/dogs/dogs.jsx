@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react'
 import {Link, Redirect, useParams} from 'react-router-dom'
 import {useForm} from 'react-hook-form'
 import axios from 'axios'
-import {Dog} from './dog'
-import {authHeaders} from '../../../src/user'
+import {Dog} from 'components/home/dogs/dog'
+import {authHeaders} from 'src/user'
 
 const Dogs = (props) => {
   const [data, setData] = useState({dogs: [], next_page: 1})

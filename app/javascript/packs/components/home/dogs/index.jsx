@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import {Dogs} from './dogs'
-import {Loading} from '../../loading'
+import {Dogs} from 'components/home/dogs/dogs'
+import {Loading} from 'components/loading'
 import {Link} from 'react-router-dom'
-import {currentUser} from '../../../src/user'
+import {currentUser} from 'src/user'
 
 export const DogsContainer = () => {
   const [location, setLocation] = useState({})
@@ -27,6 +27,7 @@ export const DogsContainer = () => {
   }
   return(
     <div>
+      <h1 className="text-center p-3">Dogs need help</h1>
       <div className="filter-buttons" style={{width: currentUser() ? '855px' : '570px'}}>
         <div className="dog-button">
           <button className="inner" onClick={getLocation}>
@@ -41,7 +42,7 @@ export const DogsContainer = () => {
           </div>
         </ShowForUser>
         <div className="dog-button">
-          <Link className="inner" to="/home/report-a-dog" >Report a Dog</Link>
+          <Link className="inner" to="/home/report" >Report a Dog</Link>
         </div>
       </div>
       <ShowForUser>
@@ -59,3 +60,4 @@ const ShowForUser = (props) => {
     currentUser() ? props.children : null
   )
 }
+export default DogsContainer

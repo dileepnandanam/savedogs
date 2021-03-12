@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import {currentUser, authHeaders} from '../../../../src/user'
+import {currentUser, authHeaders} from 'src/user'
 
 export const DogUpdate = (props) => {
   const attachment = (dog_update) => {

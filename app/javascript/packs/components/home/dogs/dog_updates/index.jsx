@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import {DogUpdate} from './dog_update'
-import {DogUpdateForm} from './dog_update_form'
+import {DogUpdate} from 'components/home/dogs/dog_updates/dog_update'
+import {DogUpdateForm} from 'components/home/dogs/dog_updates/dog_update_form'
 import {Link} from 'react-router-dom'
-import {currentUser} from '../../../../src/user'
-export const DogUpdates = (props) => {
+import {currentUser} from 'src/user'
+
+const DogUpdates = (props) => {
   const [dog_updates, setDogUpdates] = useState([])
   useEffect(() => {
     axios.get(`/api/dog_updates?dog_id=${props.dog_id}`, {
@@ -33,3 +34,5 @@ export const DogUpdates = (props) => {
     </div>
   )
 }
+
+export default DogUpdates

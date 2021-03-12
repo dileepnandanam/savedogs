@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import {useForm} from 'react-hook-form'
-import {currentUser, authHeaders} from '../../../../src/user'
+import {currentUser, authHeaders} from 'src/user'
 
 export const DogUpdateForm = (props) => {
   const {handleSubmit, register, errors} = useForm()

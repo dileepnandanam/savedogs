@@ -18,7 +18,7 @@ const Dog = (props) => {
   }
   const edit_link = () => {
     if(currentUser() && props.user_id == currentUser().id) {
-      const url = `/home/dogs-need-shelter/${props.id}/edit`
+      const url = `/home/dogs/${props.id}/edit`
       return(
         <Link className="edit-dog-link" to={url}>Edit</Link>
       )
@@ -40,7 +40,7 @@ const Dog = (props) => {
   }
 
   const sharer_link = () => (
-    <a className="fb-share-button" href={`https://www.facebook.com/sharer.php?p[url]=${getConfig('BASE_URL')}/home/dogs-need-shelter/${props.id}`}>
+    <a className="fb-share-button" href={`https://www.facebook.com/sharer.php?p[url]=${getConfig('BASE_URL')}/home/dogs/${props.id}`}>
       <div className="f-button">f</div>
       Share
     </a>
@@ -66,7 +66,7 @@ const Dog = (props) => {
         {props.created_at}
       </div>
       <div className="marker" onClick={openMap}>
-        <img src={require('../../../../images/marker.png')} />
+        <img src={require('images/marker.png')} />
       </div>
       <div className="dog-place">
         {props.place}

@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react'
 import {Link, Redirect, useParams} from 'react-router-dom'
 import {useForm} from 'react-hook-form'
 import axios from 'axios'
-import {Dog} from './dog'
-import {DogUpdates} from './dog_updates/dog_updates'
+import {Dog} from 'components/home/dogs/dog'
+import DogUpdates from 'components/home/dogs/dog_updates'
 
 const DogContainer = () => {
   const [data, setData] = useState({description: []})

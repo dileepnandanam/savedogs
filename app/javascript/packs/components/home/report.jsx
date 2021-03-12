@@ -2,8 +2,9 @@ import React, {useState} from 'react'
 import {Link, Redirect, useParams} from 'react-router-dom'
 import {useForm} from 'react-hook-form'
 import axios from 'axios'
-import {authHeaders} from '../../src/user'
+import {authHeaders} from 'src/user'
 import {useEffect} from 'react'
+
 const Report = (props) => {
   const {dog_id} = useParams()
   const {register, handleSubmit, errors, reset} = useForm()
@@ -66,7 +67,7 @@ const Report = (props) => {
     )
   }
   const success = () => {
-    const result_path = `/home/dogs-need-shelter/${id}`
+    const result_path = `/home/dogs/${id}`
     return(
       <Redirect to={result_path} />
     )
