@@ -13,14 +13,16 @@ import {Auth} from 'components/auth'
 import {Banner} from 'components/home/banner'
 import axios from 'axios'
 import {authHeaders} from 'src/user'
-import {AuthContext} from 'src/contexts/auth'
+import {AuthContext, SetAuthContext} from 'src/contexts/auth'
 ``
 const Main = () => {
   const user = React.useContext(AuthContext)
+  const authenticate = React.useContext(SetAuthContext)
   useEffect(() => {
     fetchConfig()
     axios.interceptors.request.use((request) => {
-      request.headers = authHeaders()
+      if(currentUser())
+        request.headers = authHeaders()
       return(request)
     })
     axios.interceptors.response.use((response) => {
@@ -28,7 +30,7 @@ const Main = () => {
       return(response)
     }, (error) => {
       if(error.response.status == 401)
-        setCurrentUser(null)
+        authenticate(null)
     })
   }, [])
   return(

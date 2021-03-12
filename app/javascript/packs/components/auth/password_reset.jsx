@@ -3,10 +3,11 @@ import {useForm} from 'react-hook-form'
 import {useState} from 'react'
 import axios from 'axios'
 import {useLocation} from 'react-router-dom'
-import {setUserFrom, authHeaders, currentUser} from '../../src/user'
+import {setUserFrom, authHeaders, currentUser} from 'src/user'
+import {SetAuthContext} from 'src/contexts/auth'
 
 const PasswordReset = (props) => {
-
+  const authenticate = React.useContext(SetAuthContext)
   const {register, handleSubmit, errors} = useForm()
   const query = useQuery()
   const onSubmit = (data) => {
@@ -14,16 +15,16 @@ const PasswordReset = (props) => {
       'access-token': query.get('access-token'),
       'client': query.get('client'),
       'expiry': query.get('expiry'),
-      'uid': query.get('uid')
-    }
+      'uid': query.get('uid'),
+      'Content-type': 'application/json'
+    };
     const params = {...data,
       email: query.get('uid'),
       reset_password_token: query.get('token')
     }
-    axios.put('/auth/password', params, {headers: {...headers, 'Content-type': 'application/json'}})
+    axios.put('/auth/password', params, {headers: headers})
     .then((res) => {
-        setUserFrom(res)
-        props.setCurrentUser(currentUser())
+        authenticate(res)
         set_password_changed(true)
       }
     ).catch((res) => {
