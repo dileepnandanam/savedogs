@@ -20,18 +20,6 @@ const Main = () => {
   const authenticate = React.useContext(SetAuthContext)
   useEffect(() => {
     fetchConfig()
-    axios.interceptors.request.use((request) => {
-      if(currentUser())
-        request.headers = authHeaders()
-      return(request)
-    })
-    axios.interceptors.response.use((response) => {
-      console.log(response)
-      return(response)
-    }, (error) => {
-      if(error.response.status == 401)
-        authenticate(null)
-    })
   }, [])
   return(
     <BrowserRouter>

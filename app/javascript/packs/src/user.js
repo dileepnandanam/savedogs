@@ -27,7 +27,8 @@ export const authHeaders = function() {
   return {
     'access-token': headers['access-token'],
     'client': headers['client'],
-    'uid': headers['uid']
+    'uid': headers['uid'],
+    'Content-type': 'application/json'
   }
 }
 
