@@ -3,9 +3,10 @@ import FacebookLogin from 'react-facebook-login';
 import axios from 'axios'
 import {setUserFrom, currentUser} from '../../src/user'
 import {getConfig} from '../../src/config'
+import {SetAuthContext} from 'src/contexts/auth'
 
 export const Facebook = (props) => {
-
+  const authenticate = React.useContext(SetAuthContext)
   const responseFacebook = (response) => {
     axios.post('/api/users/login_from_facebook',
       {fb_access_token: response.accessToken},
@@ -13,8 +14,7 @@ export const Facebook = (props) => {
         'Content-type': 'application/json'
       }
     }).then((res) => {
-      setUserFrom(res)
-      props.setCurrentUser(currentUser())
+      authenticate(res)
     })
   }
 

@@ -2,11 +2,13 @@ import {Redirect} from 'react-router-dom'
 import {useEffect} from 'react'
 import {setUserFrom, authHeaders, currentUser, removeUser} from '../../src/user'
 import React from 'react'
+import {SetAuthContext} from 'src/contexts/auth'
 
 export const Signout = function(props) {
+  const setCurrentUser = React.useContext(SetAuthContext)
   useEffect(() => {
     removeUser()
-    props.setCurrentUser(null)
+    setCurrentUser(null)
   },[])
   return(
     <div className="page">

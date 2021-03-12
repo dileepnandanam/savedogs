@@ -4,6 +4,7 @@ import axios from 'axios'
 import {setUserFrom, authHeaders, currentUser} from '../../src/user'
 import {Link} from 'react-router-dom'
 import {Facebook} from './facebook'
+import {SetAuthContext} from 'src/contexts/auth'
 
 class Signin extends React.Component {
   constructor(props) {
@@ -21,14 +22,14 @@ class Signin extends React.Component {
 }
 
 function SigninForm(props) {
+  const authenticate = React.useContext(SetAuthContext)
   const {register, handleSubmit} = useForm()
   const [login_error, setLoginError] = useState(null)
   const onSubmit = function(data) {
     axios.post('/auth/sign_in', data, {
       'Content-type': 'application/json'
     }).then(function(res) {
-        setUserFrom(res)
-        props.setCurrentUser(currentUser)
+        authenticate(res)
     }).catch(function(error) {
       setLoginError('email or password is wrong')
     })
@@ -37,8 +38,7 @@ function SigninForm(props) {
   const loginAsGuest = () => {
     axios.post('/api/users/log_as_guest',{},{})
       .then((res) => {
-        setUserFrom(res)
-        props.setCurrentUser(currentUser())
+        authenticate(res)
       })
   }
   return(

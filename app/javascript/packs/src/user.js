@@ -1,6 +1,8 @@
 import axios from 'axios'
 
 export const setUserFrom = function(res) {
+  if(!res)
+    return
   localStorage.setItem('current_user', JSON.stringify(
     {
       'access-token': res.headers['access-token'],

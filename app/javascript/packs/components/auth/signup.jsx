@@ -5,6 +5,7 @@ import {Redirect} from 'react-router-dom'
 import {setUserFrom, authHeaders, currentUser} from '../../src/user'
 import {getConfig} from '../../src/config'
 import {Facebook} from './facebook'
+import {SetAuthContext} from 'src/contexts/auth'
 
 class Signup extends React.Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class Signup extends React.Component {
 
 function SignupForm(props) {
   const {register, handleSubmit, errors, getValues} = useForm()
+  const authenticate = React.useContext(SetAuthContext)
 
   const [success, setSuccess] = useState(false)
   const onSubmit = function(data) {
