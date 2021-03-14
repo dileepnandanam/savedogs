@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   mount_devise_token_auth_for 'User', at: 'auth'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   scope '/api', module: 'api' do
-    resources :stray_dogs
+    resources :straydogs
     resources :dog_updates
     resources :users do
       post :login_from_facebook, on: :collection
@@ -20,5 +22,5 @@ Rails.application.routes.draw do
   get '/home/*path', to: 'apps#index'
   get '/user/*path', to: 'apps#index'
 
-  default_url_options :host => "localhost:3000"
+  default_url_options host: 'localhost:3000'
 end

@@ -1,4 +1,6 @@
-class StrayDogPolicy < ApplicationPolicy
+# frozen_string_literal: true
+
+class StraydogPolicy < ApplicationPolicy
   def create?
     @user.present?
   end

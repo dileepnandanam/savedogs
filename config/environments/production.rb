@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -51,7 +53,7 @@ Rails.application.configure do
   config.log_level = :debug
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -63,18 +65,18 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_caching = false
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { :host => 'https://savedog.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'https://savedog.herokuapp.com' }
   config.action_mailer.default_options = { from: 'streetdogs.in.india@gmail.co' }
-  config.action_mailer.smtp_settings  = {            
-    :address              => "smtp.gmail.com", 
-    :port                 => 465,
-    :domain               => 'savedog.herokuapp.com',               
-    :user_name            => 'streetdogs.in.india@gmail.com',
-    :password             => ENV['GMAIL_PASSWORD'],         
-    :authentication       => 'plain',
-    :ssl                  => true,
-    :tls                  => true,
-    :enable_starttls_auto => true,
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 465,
+    domain: 'savedog.herokuapp.com',
+    user_name: 'streetdogs.in.india@gmail.com',
+    password: ENV['GMAIL_PASSWORD'],
+    authentication: 'plain',
+    ssl: true,
+    tls: true,
+    enable_starttls_auto: true
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.
@@ -95,8 +97,8 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
-    logger           = ActiveSupport::Logger.new(STDOUT)
+  if ENV['RAILS_LOG_TO_STDOUT'].present?
+    logger           = ActiveSupport::Logger.new($stdout)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end

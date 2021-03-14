@@ -12,27 +12,27 @@ const Report = (props) => {
   const [id, setId] = useState(null)
   useEffect(() => {
     if(props.isEditing)
-      axios.get(`/api/stray_dogs/${dog_id}`)
+      axios.get(`/api/straydogs/${dog_id}`)
         .then((res) => {
           reset({description: res.data.description})
         })
   }, [])
   const onSubmit = (data) => {
     let fData = new FormData()
-    fData.append('stray_dog[description]', data.description)
+    fData.append('straydog[description]', data.description)
     if(data.image[0])  
-      fData.append('stray_dog[image]', data.image[0])
+      fData.append('straydog[image]', data.image[0])
     if(props.isEditing)
-      axios.put(`/api/stray_dogs/${dog_id}`, fData, {headers: authHeaders()})
+      axios.put(`/api/straydogs/${dog_id}`, fData, {headers: authHeaders()})
         .then((res) => {
           setId(res.data.id)
           setDogCreated(true)
         })
     else  
       navigator.geolocation.getCurrentPosition((position) => {
-        fData.append('stray_dog[lat]', position.coords.latitude)
-        fData.append('stray_dog[lngt]', position.coords.longitude)
-        axios.post(`/api/stray_dogs`, fData, {headers: authHeaders()})
+        fData.append('straydog[lat]', position.coords.latitude)
+        fData.append('straydog[lngt]', position.coords.longitude)
+        axios.post(`/api/straydogs`, fData, {headers: authHeaders()})
         .then((res) => {
           setId(res.data.id)
           setDogCreated(true)

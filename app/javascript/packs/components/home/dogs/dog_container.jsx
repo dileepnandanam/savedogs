@@ -9,7 +9,7 @@ const DogContainer = () => {
   const [data, setData] = useState({description: []})
   const {id} = useParams()
   useEffect(() => {
-    axios.get(`/api/stray_dogs/${id}`)
+    axios.get(`/api/straydogs/${id}`)
       .then((res) => {
         setData(res.data)
       })

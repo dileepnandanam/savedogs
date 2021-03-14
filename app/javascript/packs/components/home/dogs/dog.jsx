@@ -26,7 +26,7 @@ const Dog = (props) => {
   }
 
   const deleteDogHandle = () => {
-    axios.delete(`/api/stray_dogs/${props.id}`, {headers: authHeaders()})
+    axios.delete(`/api/straydogs/${props.id}`, {headers: authHeaders()})
       .then(() => {
         setDeleteDog(true)
       })

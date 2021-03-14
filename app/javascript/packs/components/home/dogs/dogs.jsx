@@ -13,7 +13,7 @@ const Dogs = (props) => {
   }, [props.location, props.mine])
 
   const endpoint = (page_no) => {
-    let url = `/api/stray_dogs/?page=${page_no}`
+    let url = `/api/straydogs/?page=${page_no}`
 
     if(props.location.lat)
       url = `${url}&lat=${props.location.lat}&lngt=${props.location.lngt}`
